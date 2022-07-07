@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: "Manrope", sans-serif;
+}
+
+:root {
+  --Color-Light-Cyan: hsl(193, 38%, 86%);
+  --Color-Neon-Green: hsl(150, 100%, 66%);
+  --Color-Grayish-Blue: hsl(217, 19%, 38%);
+  --Color-Dark-Grayish-Blue: hsl(217, 19%, 24%);
+  --Color-Dark-Blue: hsl(218, 23%, 16%);
+}
+
+body {
+  background-color: var(--Color-Dark-Blue);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Manrope", "Helvetica Neue", sans-serif; }
