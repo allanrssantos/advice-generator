@@ -8,38 +8,38 @@ import { Slip } from './../models/models';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
-  private responseSlip: any;
-  private slipObject: any;
-  public slipArray: any;
+  private _responseSlip: any;
+  public slipObject: any;
 
   constructor(private _slipService: SlipService) {}
 
   ngOnInit() {
-    this.responseSlip = this._slipService.getSlip();
+    this._responseSlip = this._slipService.getSlip();
     this.returnSlip();
     this.refresh();
   }
 
-  returnSlip() {
-    this.responseSlip.forEach((data: { slip: { advice: any; id: any } }) => {
-      const slip: Slip = {
-        slip: {
-          advice: data.slip.advice,
-          id: data.slip.id,
-        },
-      };
-      this.slipObject = slip;
-      this.slipArray = Object.entries(this.slipObject);
-      for (var i = 0; i < this.slipArray.length; i++) {
-        return this.slipArray;
+  returnSlip(): void {
+    this._responseSlip.forEach(
+      (data: { slip: { advice: string; id: number } }) => {
+        const slip: Slip = {
+          slip: {
+            advice: data.slip.advice,
+            id: data.slip.id,
+          },
+        };
+        this.slipObject = slip;
+        return this.slipObject;
       }
-    });
+    );
   }
 
-  refresh() {
+  refresh(): void {
     const btn = <HTMLInputElement>document.querySelector('#refresh');
     btn.addEventListener('click', () => {
-      location.reload();
+      window.setTimeout( () => {
+        location.reload();
+      }, 1000);
     });
   }
 }
